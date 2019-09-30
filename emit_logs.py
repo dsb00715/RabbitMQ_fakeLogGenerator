@@ -14,7 +14,7 @@ args = parser.parse_args()
 n_logs = args.num_lines
 t_sleep = args.time_sleep
 
-credentials = pika.PlainCredentials('Deep', 'Hexis_17')
+credentials = pika.PlainCredentials('Deep', '******')
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host='localhost', virtual_host='test_deep', credentials=credentials))
