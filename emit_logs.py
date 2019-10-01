@@ -2,6 +2,8 @@ import pika
 from log_generator import LogApp
 import argparse
 import re
+import os
+
 
 parser = argparse.ArgumentParser(description="Fake Apache Log Generator")
 parser.add_argument("--num", "-n", dest='num_lines', help="Number of lines to generate (0 for infinite)", type=int,
@@ -14,7 +16,7 @@ args = parser.parse_args()
 n_logs = args.num_lines
 t_sleep = args.time_sleep
 
-credentials = pika.PlainCredentials('Deep', '******')
+credentials = pika.PlainCredentials(os.environ['RABBIT_SRV109_USERNAME'], os.environ['RABBIT_SRV109_PASSWORD'])
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host='localhost', virtual_host='test_deep', credentials=credentials))

@@ -1,7 +1,8 @@
 import pika
 import sys
+import os
 
-credentials = pika.PlainCredentials('Deep', '******')
+credentials = pika.PlainCredentials(os.environ['RABBIT_SRV109_USERNAME'], os.environ['RABBIT_SRV109_PASSWORD'])
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host='localhost', virtual_host='test_deep', credentials=credentials))
